@@ -2,7 +2,7 @@
 services:
   db:
     image: postgres:18-alpine
-    container_name: postgres_central
+    container_name: postgres_golang
     environment:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
@@ -27,7 +27,7 @@ services:
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_DB=${POSTGRES_DB}
-      - DB_HOST=db
+      - DB_HOST=${DB_HOST}
 
   test: 
     build: 
