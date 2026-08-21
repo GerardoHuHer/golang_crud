@@ -10,10 +10,11 @@ func New(roverHandler *handler.RoverHandler) *mux.Router {
 
 	api := r.PathPrefix("/api").Subrouter()
 
-	api.HandleFunc("/create_rover", roverHandler.Create).Methods("POST")
-	api.HandleFunc("/get_rover/{id}", roverHandler.GetByIdHandler).Methods("GET")
-	api.HandleFunc("/update_rover/{id}", roverHandler.UpdateByIdHandler).Methods("PATCH")
-	api.HandleFunc("/delete_rover/{id}", roverHandler.DeleteByIdHandler).Methods("DELETE")
+	api.HandleFunc("/create_vehiculo", roverHandler.Create).Methods("POST")
+	api.HandleFunc("/get_vehiculo/{id}", roverHandler.GetByIdHandler).Methods("GET")
+	api.HandleFunc("/update_vehiculo/{id}", roverHandler.UpdateByIdHandler).Methods("PATCH")
+	api.HandleFunc("/delete_vehiculo/{id}", roverHandler.DeleteByIdHandler).Methods("DELETE")
+	api.HandleFunc("/get_all_vehiculos", roverHandler.GetAllHandler).Methods("GET")
 
 	return r
 }

@@ -47,3 +47,7 @@ func (r *RoverService) UpdateRoverById(ctx context.Context, id uint, pos_x, pos_
 func (r *RoverService) DeleteRoverById(ctx context.Context, id uint) error {
 	return r.repo.Delete(ctx, id)
 }
+
+func (r *RoverService) GetAll(ctx context.Context) (*[]domain.Rover, error) {
+	return r.repo.GetAll(ctx)
+}

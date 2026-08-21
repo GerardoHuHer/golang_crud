@@ -39,3 +39,11 @@ func (r *roverRepository) Update(ctx context.Context, rover *domain.Rover) error
 func (r *roverRepository) Delete(ctx context.Context, id uint) error {
 	return r.db.WithContext(ctx).Delete(&domain.Rover{}, id).Error
 }
+
+func (r *roverRepository) GetAll(ctx context.Context) (*[]domain.Rover, error) {
+	var rovers *[]domain.Rover
+	if err := r.db.WithContext(ctx).Find(&rovers).Error; err != nil {
+		return nil, err
+	}
+	return rovers, nil
+}

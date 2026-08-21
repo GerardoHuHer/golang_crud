@@ -11,4 +11,5 @@ type RoverRepository interface {
 	Create(ctx context.Context, r *domain.Rover) error
 	Update(ctx context.Context, r *domain.Rover) error
 	Delete(ctx context.Context, id uint) error
+	GetAll(ctx context.Context) (*[]domain.Rover, error)
 }

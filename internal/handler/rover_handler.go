@@ -104,3 +104,15 @@ func (h *RoverHandler) DeleteByIdHandler(w http.ResponseWriter, r *http.Request)
 	json.NewEncoder(w).Encode(response)
 
 }
+
+func (h *RoverHandler) GetAllHandler(w http.ResponseWriter, r *http.Request) {
+	vehiculos, err := h.svc.GetAll(r.Context())
+	if err != nil {
+		http.Error(w, "There was an error", http.StatusBadRequest)
+		return
+	}
+	w.Header().Set("Content-type", "application/json")
+	w.WriteHeader(http.StatusOK)
+
+	json.NewEncoder(w).Encode(vehiculos)
+}
